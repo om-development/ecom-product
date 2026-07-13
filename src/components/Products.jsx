@@ -33,8 +33,8 @@ const Products = ({ products, setProducts }) => {
             onClick={() => setLayout("vertical")}
             className={`px-4 py-2 rounded-lg text-sm font-medium transition ${
               layout === "vertical"
-                ? "bg-primary text-white"
-                : "bg-white text-blue-700 border border-blue-300"
+                ? "bg-primary text-accent"
+                : "bg-page-bg text-secondary border border-neutral"
             }`}
           >
             Grid
@@ -43,8 +43,8 @@ const Products = ({ products, setProducts }) => {
             onClick={() => setLayout("horizontal")}
             className={`px-4 py-2 rounded-lg text-sm font-medium transition ${
               layout === "horizontal"
-                ? "bg-primary text-white"
-                : "bg-white text-blue-700 border border-blue-300"
+                ? "bg-primary text-accent"
+                : "bg-page-bg text-secondary border border-neutral"
             }`}
           >
             List
@@ -60,7 +60,7 @@ const Products = ({ products, setProducts }) => {
         }
       >
         {filtered.length === 0 ? (
-          <p className="col-span-full text-center text-gray-500 py-12 text-lg">No products found for "{query}".</p>
+          <p className="col-span-full text-center text-secondary/70 py-12 text-lg">No products found for "{query}".</p>
         ) : (
           filtered.map((product) => (
             <ProductCard key={product.id} product={product} layout={layout} />

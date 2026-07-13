@@ -14,7 +14,7 @@ const Hero = ({ onAddProduct }) => {
       const product = await addProduct({
         title,
         price: parseFloat(price),
-        description: "Added via product form",
+        description: "Added sucessfully",
         images: [image],
         thumbnail: image,
       });
@@ -40,49 +40,49 @@ const Hero = ({ onAddProduct }) => {
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight text-primary">
             Welcome User!!
           </h1>
-          <p className="mt-4 text-base sm:text-lg text-blue-600 max-w-md">
-            Add your favourite products and build your collection.
+          <p className="mt-4 text-base sm:text-lg text-secondary max-w-md">
+            Add products here.
           </p>
         </div>
-        <div className="w-full max-w-md bg-white rounded-2xl p-6 sm:p-8 shadow-xl border border-blue-200">
+        <div className="w-full max-w-md bg-surface rounded-2xl p-6 sm:p-8 shadow-xl border border-neutral">
           <h2 className="text-primary text-xl sm:text-2xl font-semibold mb-6 text-center">
             Add Product
           </h2>
           <form className="space-y-5" onSubmit={handleSubmit}>
             <div>
-              <label className="block text-blue-700 text-sm font-medium mb-1">Image URL</label>
+              <label className="block text-secondary text-sm font-medium mb-1">Image URL</label>
               <input
                 type="url"
                 value={image}
                 onChange={(e) => setImage(e.target.value)}
                 placeholder="https://example.com/image.jpg"
-                className="w-full px-4 py-2.5 rounded-lg border border-blue-300 text-blue-900 placeholder-blue-400 focus:outline-none focus:ring-2 focus:ring-primary"
+                className="w-full px-4 py-2.5 rounded-lg border border-neutral text-secondary placeholder-secondary/40 bg-page-bg focus:outline-none focus:ring-2 focus:ring-primary"
               />
             </div>
             <div>
-              <label className="block text-blue-700 text-sm font-medium mb-1">Product Name</label>
+              <label className="block text-secondary text-sm font-medium mb-1">Product Name</label>
               <input
                 type="text"
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
                 placeholder="Enter product name"
-                className="w-full px-4 py-2.5 rounded-lg border border-blue-300 text-blue-900 placeholder-blue-400 focus:outline-none focus:ring-2 focus:ring-primary"
+                className="w-full px-4 py-2.5 rounded-lg border border-neutral text-secondary placeholder-secondary/40 bg-page-bg focus:outline-none focus:ring-2 focus:ring-primary"
               />
             </div>
             <div>
-              <label className="block text-blue-700 text-sm font-medium mb-1">Price ($)</label>
+              <label className="block text-secondary text-sm font-medium mb-1">Price ($)</label>
               <input
                 type="number"
                 step="0.01"
                 value={price}
                 onChange={(e) => setPrice(e.target.value)}
                 placeholder="0.00"
-                className="w-full px-4 py-2.5 rounded-lg border border-blue-300 text-blue-900 placeholder-blue-400 focus:outline-none focus:ring-2 focus:ring-primary"
+                className="w-full px-4 py-2.5 rounded-lg border border-neutral text-secondary placeholder-secondary/40 bg-page-bg focus:outline-none focus:ring-2 focus:ring-primary"
               />
             </div>
             <button
               type="submit"
-              className="w-full bg-primary text-white font-semibold py-2.5 rounded-lg hover:bg-blue-700 transition"
+              className="w-full bg-primary text-accent font-semibold py-2.5 rounded-lg hover:bg-primary/90 transition"
             >
               Submit
             </button>

@@ -21,49 +21,75 @@ const Header = () => {
   };
 
   return (
-    <header className="sticky top-0 z-50 bg-primary">
+    <header className="sticky top-0 z-50 bg-page-bg border-b border-neutral">
       <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
-        <span className="text-white text-xl font-bold tracking-wide shrink-0">Store</span>
+        <span className="text-primary text-xl font-bold tracking-wide shrink-0">
+          Store
+        </span>
 
-        <form onSubmit={handleSearch} className="hidden md:flex items-center flex-1 max-w-md">
+        <form
+          onSubmit={handleSearch}
+          className="hidden md:flex items-center flex-1 max-w-md"
+        >
           <div className="relative w-full">
             <input
               type="text"
               value={input}
               onChange={(e) => setInput(e.target.value)}
-              placeholder="Search products..."
-              className="w-full px-4 py-1.5 rounded-lg text-sm text-blue-900 placeholder-blue-400 bg-white focus:outline-none"
+              placeholder="Search From here"
+              className="w-full px-4 py-1.5 rounded-lg text-sm text-secondary placeholder-secondary/40 bg-surface focus:outline-none focus:ring-2 focus:ring-primary"
             />
             {input && (
-              <button type="button" onClick={clearSearch} className="absolute right-2 top-1/2 -translate-y-1/2 text-blue-400 text-sm">&times;</button>
+              <button
+                type="button"
+                onClick={clearSearch}
+                className="absolute right-2 top-1/2 -translate-y-1/2 text-secondary/50 text-sm"
+              >
+                &times;
+              </button>
             )}
           </div>
         </form>
 
-        <nav className="hidden md:flex space-x-6 text-white font-medium shrink-0">
-          <a href="#" className="hover:opacity-80 transition">Home</a>
-          <a href="#" className="hover:opacity-80 transition">Contact</a>
-          <a href="#" className="hover:opacity-80 transition">About</a>
+        <nav className="hidden md:flex space-x-6 text-secondary font-medium shrink-0">
+          <a href="#" className="hover:text-primary transition">
+            Home
+          </a>
+          <a href="#" className="hover:text-primary transition">
+            Contact
+          </a>
+          <a href="#" className="hover:text-primary transition">
+            About
+          </a>
         </nav>
 
-        <button className="md:hidden text-white text-2xl" onClick={() => setOpen(!open)}>
+        <button
+          className="md:hidden text-primary text-2xl"
+          onClick={() => setOpen(!open)}
+        >
           {open ? "✕" : "☰"}
         </button>
       </div>
       {open && (
-        <div className="md:hidden bg-primary px-4 pb-4 space-y-3 text-white font-medium">
-          <form onSubmit={handleSearch} className="flex">
+        <div className="md:hidden bg-page-bg px-4 pb-4 space-y-3 text-secondary font-medium border-t border-neutral">
+          <form onSubmit={handleSearch} className="flex pt-3">
             <input
               type="text"
               value={input}
               onChange={(e) => setInput(e.target.value)}
               placeholder="Search products..."
-              className="w-full px-4 py-1.5 rounded-lg text-sm text-blue-900 placeholder-blue-400 bg-white focus:outline-none"
+              className="w-full px-4 py-1.5 rounded-lg text-sm text-secondary placeholder-secondary/40 bg-surface focus:outline-none focus:ring-2 focus:ring-primary"
             />
           </form>
-          <a href="#" className="block hover:opacity-80 transition">Home</a>
-          <a href="#" className="block hover:opacity-80 transition">Contact</a>
-          <a href="#" className="block hover:opacity-80 transition">About</a>
+          <a href="#" className="block hover:text-primary transition">
+            Home
+          </a>
+          <a href="#" className="block hover:text-primary transition">
+            Contact
+          </a>
+          <a href="#" className="block hover:text-primary transition">
+            About
+          </a>
         </div>
       )}
     </header>
