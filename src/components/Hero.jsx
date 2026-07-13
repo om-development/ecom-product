@@ -37,7 +37,7 @@ const Hero = ({ onAddProduct }) => {
     <section className="flex items-center justify-center px-4 py-16 md:py-24">
       <div className="max-w-4xl w-full flex flex-col md:flex-row items-center gap-10 md:gap-16">
         <div className="text-center md:text-left flex-1">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight text-primary">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight text-secondary">
             Welcome User!!
           </h1>
           <p className="mt-4 text-base sm:text-lg text-secondary max-w-md">
@@ -45,7 +45,7 @@ const Hero = ({ onAddProduct }) => {
           </p>
         </div>
         <div className="w-full max-w-md bg-surface rounded-2xl p-6 sm:p-8 shadow-xl border border-neutral">
-          <h2 className="text-primary text-xl sm:text-2xl font-semibold mb-6 text-center">
+          <h2 className="text-secondary text-xl sm:text-2xl font-semibold mb-6 text-center">
             Add Product
           </h2>
           <form className="space-y-5" onSubmit={handleSubmit}>
@@ -56,7 +56,7 @@ const Hero = ({ onAddProduct }) => {
                 value={image}
                 onChange={(e) => setImage(e.target.value)}
                 placeholder="https://example.com/image.jpg"
-                className="w-full px-4 py-2.5 rounded-lg border border-neutral text-secondary placeholder-secondary/40 bg-page-bg focus:outline-none focus:ring-2 focus:ring-primary"
+                className="w-full px-4 py-2.5 rounded-lg border border-neutral text-secondary placeholder-secondary/40 bg-neutral focus:outline-none focus:ring-2 focus:ring-secondary"
               />
             </div>
             <div>
@@ -66,7 +66,7 @@ const Hero = ({ onAddProduct }) => {
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
                 placeholder="Enter product name"
-                className="w-full px-4 py-2.5 rounded-lg border border-neutral text-secondary placeholder-secondary/40 bg-page-bg focus:outline-none focus:ring-2 focus:ring-primary"
+                className="w-full px-4 py-2.5 rounded-lg border border-neutral text-secondary placeholder-secondary/40 bg-neutral focus:outline-none focus:ring-2 focus:ring-secondary"
               />
             </div>
             <div>
@@ -77,12 +77,12 @@ const Hero = ({ onAddProduct }) => {
                 value={price}
                 onChange={(e) => setPrice(e.target.value)}
                 placeholder="0.00"
-                className="w-full px-4 py-2.5 rounded-lg border border-neutral text-secondary placeholder-secondary/40 bg-page-bg focus:outline-none focus:ring-2 focus:ring-primary"
+                className="w-full px-4 py-2.5 rounded-lg border border-neutral text-secondary placeholder-secondary/40 bg-neutral focus:outline-none focus:ring-2 focus:ring-secondary"
               />
             </div>
             <button
               type="submit"
-              className="w-full bg-primary text-accent font-semibold py-2.5 rounded-lg hover:bg-primary/90 transition"
+              className="w-full bg-secondary text-accent font-semibold py-2.5 rounded-lg hover:bg-secondary/80 transition"
             >
               Submit
             </button>

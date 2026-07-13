@@ -27,14 +27,14 @@ const Products = ({ products, setProducts }) => {
   return (
     <section className="max-w-7xl mx-auto px-4 py-16">
       <div className="flex items-center justify-between mb-10">
-        <h2 className="text-3xl font-bold text-primary">Products</h2>
+        <h2 className="text-3xl font-bold text-secondary">Products</h2>
         <div className="flex gap-2">
           <button
             onClick={() => setLayout("vertical")}
             className={`px-4 py-2 rounded-lg text-sm font-medium transition ${
               layout === "vertical"
-                ? "bg-primary text-accent"
-                : "bg-page-bg text-secondary border border-neutral"
+                ? "bg-secondary text-accent"
+                : "bg-neutral text-secondary border border-neutral"
             }`}
           >
             Grid
@@ -43,8 +43,8 @@ const Products = ({ products, setProducts }) => {
             onClick={() => setLayout("horizontal")}
             className={`px-4 py-2 rounded-lg text-sm font-medium transition ${
               layout === "horizontal"
-                ? "bg-primary text-accent"
-                : "bg-page-bg text-secondary border border-neutral"
+                ? "bg-secondary text-accent"
+                : "bg-neutral text-secondary border border-neutral"
             }`}
           >
             List

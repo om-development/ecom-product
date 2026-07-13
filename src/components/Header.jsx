@@ -23,7 +23,7 @@ const Header = () => {
   return (
     <header className="sticky top-0 z-50 bg-page-bg border-b border-neutral">
       <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
-        <span className="text-primary text-xl font-bold tracking-wide shrink-0">
+        <span className="text-secondary text-xl font-bold tracking-wide shrink-0">
           Store
         </span>
 
@@ -37,7 +37,7 @@ const Header = () => {
               value={input}
               onChange={(e) => setInput(e.target.value)}
               placeholder="Search From here"
-              className="w-full px-4 py-1.5 rounded-lg text-sm text-secondary placeholder-secondary/40 bg-surface focus:outline-none focus:ring-2 focus:ring-primary"
+              className="w-full px-4 py-1.5 rounded-lg text-sm text-secondary placeholder-secondary/40 bg-surface focus:outline-none focus:ring-2 focus:ring-secondary"
             />
             {input && (
               <button
@@ -52,19 +52,19 @@ const Header = () => {
         </form>
 
         <nav className="hidden md:flex space-x-6 text-secondary font-medium shrink-0">
-          <a href="#" className="hover:text-primary transition">
+          <a href="#" className="hover:text-secondary transition">
             Home
           </a>
-          <a href="#" className="hover:text-primary transition">
+          <a href="#" className="hover:text-secondary transition">
             Contact
           </a>
-          <a href="#" className="hover:text-primary transition">
+          <a href="#" className="hover:text-secondary transition">
             About
           </a>
         </nav>
 
         <button
-          className="md:hidden text-primary text-2xl"
+          className="md:hidden text-secondary text-2xl"
           onClick={() => setOpen(!open)}
         >
           {open ? "✕" : "☰"}
@@ -78,16 +78,16 @@ const Header = () => {
               value={input}
               onChange={(e) => setInput(e.target.value)}
               placeholder="Search products..."
-              className="w-full px-4 py-1.5 rounded-lg text-sm text-secondary placeholder-secondary/40 bg-surface focus:outline-none focus:ring-2 focus:ring-primary"
+              className="w-full px-4 py-1.5 rounded-lg text-sm text-secondary placeholder-secondary/40 bg-surface focus:outline-none focus:ring-2 focus:ring-secondary"
             />
           </form>
-          <a href="#" className="block hover:text-primary transition">
+          <a href="#" className="block hover:text-secondary transition">
             Home
           </a>
-          <a href="#" className="block hover:text-primary transition">
+          <a href="#" className="block hover:text-secondary transition">
             Contact
           </a>
-          <a href="#" className="block hover:text-primary transition">
+          <a href="#" className="block hover:text-secondary transition">
             About
           </a>
         </div>
