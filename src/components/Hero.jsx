@@ -55,7 +55,7 @@ const Hero = ({ onAddProduct }) => {
                 type="url"
                 value={image}
                 onChange={(e) => setImage(e.target.value)}
-                placeholder="https://example.com/image.jpg"
+                placeholder="Image Link Here "
                 className="w-full px-4 py-2.5 rounded-lg border border-neutral text-secondary placeholder-secondary/40 bg-neutral focus:outline-none focus:ring-2 focus:ring-secondary"
               />
             </div>
