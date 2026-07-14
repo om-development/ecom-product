@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Hero from "./components/Hero";
 import Products from "./components/Products";
+import AddProductForm from "./components/AddProductForm";
 import "./index.css";
 
 function HomePage() {
@@ -12,8 +13,9 @@ function HomePage() {
 
   return (
     <>
-      <Hero onAddProduct={handleAddProduct} />
+      <Hero />
       <Products products={products} setProducts={setProducts} />
+      <AddProductForm onAddProduct={handleAddProduct} />
     </>
   );
 }

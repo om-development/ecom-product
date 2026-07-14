@@ -7,22 +7,29 @@ const Products = ({ products, setProducts }) => {
   const [layout, setLayout] = useState("vertical");
   const [searchParams] = useSearchParams();
   const query = searchParams.get("q")?.toLowerCase() || "";
+  const category = searchParams.get("category") || "";
 
   useEffect(() => {
     getProducts(30).then(setProducts).catch(console.error);
   }, [setProducts]);
 
-  const filtered = useMemo(
-    () =>
-      query
-        ? products.filter(
-            (p) =>
-              p.title.toLowerCase().includes(query) ||
-              p.description.toLowerCase().includes(query)
-          )
-        : products,
-    [products, query]
-  );
+  const filtered = useMemo(() => {
+    let result = products;
+
+    if (query) {
+      result = result.filter(
+        (p) =>
+          p.title.toLowerCase().includes(query) ||
+          p.description.toLowerCase().includes(query)
+      );
+    }
+
+    if (category) {
+      result = result.filter((p) => p.category === category);
+    }
+
+    return result;
+  }, [products, query, category]);
 
   return (
     <section className="max-w-7xl mx-auto px-4 py-16">
@@ -56,7 +63,7 @@ const Products = ({ products, setProducts }) => {
         className={
             layout === "vertical"
               ? "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
-              : "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
+              : "grid grid-cols-1 gap-4"
         }
       >
         {filtered.length === 0 ? (

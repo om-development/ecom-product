@@ -4,15 +4,16 @@ const ProductCard = ({ product, layout = "vertical" }) => {
   const imgSrc = product.image || product.thumbnail || "";
 
   const card = layout === "horizontal" ? (
-    <div className="flex items-center gap-4 bg-surface rounded-xl shadow-md p-4 border border-neutral">
+    <div className="flex items-center gap-6 bg-surface rounded-xl shadow-md p-5 border border-neutral w-full">
       <img
         src={imgSrc}
         alt={product.title}
-        className="w-24 h-24 object-cover rounded-lg flex-shrink-0"
+        className="w-32 h-32 object-cover rounded-lg flex-shrink-0"
       />
       <div className="flex-1 min-w-0">
-        <h3 className="text-lg font-semibold text-secondary truncate">{product.title}</h3>
-        <p className="text-secondary font-bold text-xl mt-1">${product.price}</p>
+        <h3 className="text-xl font-semibold text-secondary">{product.title}</h3>
+        <p className="text-secondary/70 mt-1 text-sm leading-relaxed line-clamp-2">{product.description}</p>
+        <p className="text-secondary font-bold text-2xl mt-2">${product.price}</p>
       </div>
     </div>
   ) : (
