@@ -7,12 +7,19 @@ const Header = () => {
   const [input, setInput] = useState(searchParams.get("q") || "");
   const [categories, setCategories] = useState([]);
   const [showCategories, setShowCategories] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState("");
   const dropdownRef = useRef(null);
-
-  const selectedCategory = searchParams.get("category") || "";
 
   useEffect(() => {
     getCategories().then(setCategories).catch(console.error);
+  }, []);
+
+  useEffect(() => {
+    const params = new URLSearchParams(searchParams);
+    if (params.has("category")) {
+      params.delete("category");
+      setSearchParams(params, { replace: true });
+    }
   }, []);
 
   useEffect(() => {
@@ -38,11 +45,16 @@ const Header = () => {
 
   const clearSearch = () => {
     setInput("");
-    setSearchParams({});
+    setSelectedCategory("");
+    const params = new URLSearchParams(searchParams);
+    params.delete("q");
+    params.delete("category");
+    setSearchParams(params);
   };
 
   const handleCategoryChange = (cat) => {
     setShowCategories(false);
+    setSelectedCategory(cat);
     const params = new URLSearchParams(searchParams);
     if (cat) {
       params.set("category", cat);
