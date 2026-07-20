@@ -1,8 +1,10 @@
 import { useState, useEffect, useRef } from "react";
-import { useSearchParams } from "react-router";
+import { useSearchParams, Link } from "react-router";
 import { getCategories } from "../api/productApi";
+import { useAuth } from "../context/AuthContext";
 
 const Header = () => {
+  const { user, logout } = useAuth();
   const [searchParams, setSearchParams] = useSearchParams();
   const [input, setInput] = useState(searchParams.get("q") || "");
   const [categories, setCategories] = useState([]);
@@ -142,6 +144,27 @@ const Header = () => {
             </div>
           )}
         </div>
+
+        {user ? (
+          <div className="flex items-center gap-3 shrink-0">
+            <span className="text-secondary text-sm hidden sm:inline">
+              {user.firstName || user.username}
+            </span>
+            <button
+              onClick={logout}
+              className="px-4 py-1.5 rounded-lg text-sm font-medium bg-secondary text-accent hover:bg-secondary/80 transition"
+            >
+              Logout
+            </button>
+          </div>
+        ) : (
+          <Link
+            to="/login"
+            className="shrink-0 px-4 py-1.5 rounded-lg text-sm font-medium bg-secondary text-accent hover:bg-secondary/80 transition"
+          >
+            Login
+          </Link>
+        )}
       </div>
     </header>
   );
