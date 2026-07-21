@@ -9,7 +9,7 @@ export const getProduct = async (id) => {
   return { ...data, image: data.thumbnail || data.images?.[0] || "" };
 };
 
-export const getProducts = async (limit = 8) => {
+export const getProducts = async (limit = 200) => {
   const { data } = await api.get(`/products?limit=${limit}`);
   return data.products.map((p) => ({
     ...p,

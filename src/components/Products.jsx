@@ -5,12 +5,14 @@ import { useSearchParams } from "react-router";
 
 const Products = ({ products, setProducts }) => {
   const [layout, setLayout] = useState("vertical");
+  const [currentPage, setCurrentPage] = useState(1);
+  const pageSize = 15;
   const [searchParams] = useSearchParams();
   const query = searchParams.get("q")?.toLowerCase() || "";
   const category = searchParams.get("category") || "";
 
   useEffect(() => {
-    getProducts(30).then(setProducts).catch(console.error);
+    getProducts().then(setProducts).catch(console.error);
   }, [setProducts]);
 
   const filtered = useMemo(() => {
@@ -30,6 +32,14 @@ const Products = ({ products, setProducts }) => {
 
     return result;
   }, [products, query, category]);
+
+  const maxPage = Math.max(1, Math.ceil(filtered.length / pageSize));
+  const safePage = Math.min(currentPage, maxPage);
+
+  const paginated = useMemo(() => {
+    const start = (safePage - 1) * pageSize;
+    return filtered.slice(start, start + pageSize);
+  }, [filtered, safePage, pageSize]);
 
   return (
     <section className="max-w-7xl mx-auto px-4 py-16">
@@ -66,14 +76,33 @@ const Products = ({ products, setProducts }) => {
               : "grid grid-cols-1 gap-4"
         }
       >
-        {filtered.length === 0 ? (
+        {paginated.length === 0 ? (
           <p className="col-span-full text-center text-secondary/70 py-12 text-lg">No products found for "{query}".</p>
         ) : (
-          filtered.map((product) => (
+          paginated.map((product) => (
             <ProductCard key={product.id} product={product} layout={layout} />
           ))
         )}
       </div>
+
+      {filtered.length > pageSize && (
+        <div className="flex justify-center gap-4 mt-10">
+          <button
+            onClick={() => setCurrentPage((p) => p - 1)}
+            disabled={safePage <= 1}
+            className="px-6 py-2 rounded-lg font-medium bg-secondary text-accent disabled:opacity-40 disabled:cursor-not-allowed hover:bg-secondary/80 transition"
+          >
+            Previous
+          </button>
+          <button
+            onClick={() => setCurrentPage((p) => p + 1)}
+            disabled={safePage >= maxPage}
+            className="px-6 py-2 rounded-lg font-medium bg-secondary text-accent disabled:opacity-40 disabled:cursor-not-allowed hover:bg-secondary/80 transition"
+          >
+            Next
+          </button>
+        </div>
+      )}
     </section>
   );
 };
